@@ -1,6 +1,6 @@
 const { Task } = require("../models/task.model");
 
-export const getTask = async (req, res) => {
+const getTask = async (req, res) => {
   try {
     const tasks = await Task.find().sort({ createdAt: -1, updatedAt: -1 });
     return res.status(200).json({ data: tasks });
@@ -11,7 +11,7 @@ export const getTask = async (req, res) => {
   }
 };
 
-export const updateTask = async (req, res) => {
+const updateTask = async (req, res) => {
   try {
     const tasksToUpdate = req.body.tasks;
     const isAdmin = req.isAdmin;
@@ -80,7 +80,7 @@ export const updateTask = async (req, res) => {
   }
 };
 
-export const addTask = async (req, res) => {
+const addTask = async (req, res) => {
   try {
     const {
       quantity,
@@ -138,3 +138,5 @@ export const addTask = async (req, res) => {
     });
   }
 };
+
+module.exports = { getTask, updateTask, addTask };
