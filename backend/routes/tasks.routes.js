@@ -6,7 +6,7 @@ const tasksRoute = express.Router();
 //To Get all the data
 tasksRoute.get("/task", async (req, res) => {
   try {
-    const tasks = await Task.find();
+    const tasks = await Task.find().sort({ createdAt: -1, updatedAt: -1 });
     return res.status(200).json({ data: tasks });
   } catch (error) {
     return res

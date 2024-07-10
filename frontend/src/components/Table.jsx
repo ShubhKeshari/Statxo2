@@ -111,6 +111,7 @@ const DataTable = () => {
         isClosable: true,
       });
       setModifiedData([]);
+      fetchData();
     } catch (error) {
       toast({
         title: `Error: ${error.message}`,

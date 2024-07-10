@@ -45,6 +45,16 @@ const taskSchema = new mongoose.Schema({
     enum: ["High", "Low", "Mid"],
     required: true,
   },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    required: true,
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now,
+    required: true,
+  }
 });
 
 const Task = mongoose.model("tasks", taskSchema);
