@@ -4,7 +4,7 @@ import { Register } from "../Pages/Register";
 import { Route, Routes } from "react-router-dom";
 import { Dashboard } from "../Pages/Dashboard";
 import { Home } from "../Pages/Home";
-import { AddData } from "../Pages/AddData";
+import { AddTask } from "../Pages/AddTask";
 import { Error } from "../Pages/Error";
 import { PrivateRoute } from "./PrivateRoute";
 
@@ -23,10 +23,10 @@ const AllRoutes = () => {
       <Route path="/login" element={<Login />}></Route>
       <Route path="/register" element={<Register />}></Route>
       <Route
-        path="/addData"
+        path="/addTask"
         element={
           <PrivateRoute>
-            <AddData />
+            <AddTask />
           </PrivateRoute>
         }
       ></Route>

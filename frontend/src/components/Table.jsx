@@ -14,9 +14,11 @@ import {
 } from "@chakra-ui/react";
 import { AuthContext } from "../context/AuthContext";
 import { BASE_URL } from "../../util/vars";
+import { FetchContext } from "../context/FetchContext";
 const DataTable = () => {
   const [tableData, setTableData] = useState([]);
   const [modifiedData, setModifiedData] = useState([]);
+  const {shouldFetch, setShouldFetch} = useContext(FetchContext);
   const toast = useToast();
   const { auth, setAuth } = useContext(AuthContext);
   const fetchData = async () => {
@@ -121,21 +123,23 @@ const DataTable = () => {
   };
   useEffect(() => {
     fetchData();
-  }, []);
+    setShouldFetch(false);
+  }, [shouldFetch]);
   return (
     <>
+     
       <Box height={"75vh"} mt={16} overflow={"auto"}>
         <Table variant="simple" size={{ base: "sm", lg: "md" }}>
-          <Thead position="sticky" top="0" bg="gray.100" zIndex={"docked"}>
+          <Thead position="sticky" top="0" bg="#BA3B93" zIndex={"docked"} >
             <Tr>
-              <Th>Quantity</Th>
-              <Th>Amount</Th>
-              <Th>Posting Year</Th>
-              <Th>Posting Month</Th>
-              <Th>Action Type</Th>
-              <Th>Action Number</Th>
-              <Th>Action Name</Th>
-              <Th>Status</Th>
+              <Th color="white">Quantity</Th>
+              <Th color="white">Amount</Th>
+              <Th color="white">Posting Year</Th>
+              <Th color="white">Posting Month</Th>
+              <Th color="white">Action Type</Th>
+              <Th color="white">Action Number</Th>
+              <Th color="white">Action Name</Th>
+              <Th color="white">Status</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -177,15 +181,19 @@ const DataTable = () => {
                   </Select>
                 </Td>
                 <Td>
-                  <Select
-                    w={"150px"}
-                    value={item.status}
-                    onChange={(e) => handleStatus(item, e.target.value)}
-                  >
-                    <option value="Pending">Pending</option>
-                    <option value="InProgress">In-Progress</option>
-                    <option value="Approved">Approved</option>
-                  </Select>
+                  {!auth.isAdmin ? (
+                    item.status
+                  ) : (
+                    <Select
+                      w={"150px"}
+                      value={item.status}
+                      onChange={(e) => handleStatus(item, e.target.value)}
+                    >
+                      <option value="Pending">Pending</option>
+                      <option value="InProgress">In-Progress</option>
+                      <option value="Approved">Approved</option>
+                    </Select>
+                  )}
                 </Td>
               </Tr>
             ))}

@@ -19,13 +19,13 @@ import { AuthContext } from "../context/AuthContext";
     const navigate = useNavigate();
     const { auth, setAuth } = useContext(AuthContext);
     useEffect(() => {
-        if (localStorage.getItem("email")) {
+        if (JSON.parse(localStorage.getItem("email"))) {
           setAuth({
             isAuth: "true",
-            email: localStorage.getItem("email"),
-            userId: localStorage.getItem("userId"),
-            accessToken: localStorage.getItem("accessToken"),
-            isAdmin:localStorage.getItem("isAdmin")
+            email: JSON.parse(localStorage.getItem("email")),
+            userId: JSON.parse(localStorage.getItem("userId")),
+            accessToken: JSON.parse(localStorage.getItem("accessToken")),
+            isAdmin:JSON.parse(localStorage.getItem("isAdmin"))
           });
         }
       }, []);

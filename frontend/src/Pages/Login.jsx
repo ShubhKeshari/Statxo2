@@ -70,10 +70,10 @@ const Login = () => {
         isAdmin: result.data.isAdmin,
         email: result.data.email,
       });
-      localStorage.setItem("accessToken", result.accessToken);
-      localStorage.setItem("userId", result.data.userId);
-      localStorage.setItem("email", result.data.email);
-      localStorage.setItem("isAdmin", result.data.isAdmin);
+      localStorage.setItem("accessToken", JSON.stringify(result.accessToken));
+      localStorage.setItem("userId", JSON.stringify(result.data.userId));
+      localStorage.setItem("email", JSON.stringify(result.data.email));
+      localStorage.setItem("isAdmin", JSON.stringify(result.data.isAdmin));
       toast({
         title: `${result.message}`,
         status: "success",
@@ -133,10 +133,10 @@ const Login = () => {
         isAdmin: result.data.isAdmin,
         email: result.data.email,
       });
-      localStorage.setItem("accessToken", result.accessToken);
-      localStorage.setItem("userId", result.data.userId);
-      localStorage.setItem("email", result.data.email);
-      localStorage.setItem("isAdmin", result.data.isAdmin);
+      localStorage.setItem("accessToken", JSON.stringify(result.accessToken));
+      localStorage.setItem("userId", JSON.stringify(result.data.userId));
+      localStorage.setItem("email", JSON.stringify(result.data.email));
+      localStorage.setItem("isAdmin", JSON.stringify(result.data.isAdmin));
       toast({
         title: `${result.message}`,
         status: "success",

@@ -117,7 +117,7 @@ const Navbar = () => {
               to={"/"}
               style={({ isActive }) => ({
                 fontWeight: 600,
-                color: isActive ? "#c3432e" : "#4A5568",
+                color: isActive ? "#BA3B93" : "#4A5568",
                 textDecoration: "none",
               })}
             >
@@ -128,7 +128,7 @@ const Navbar = () => {
               to={"/dashboard"}
               style={({ isActive }) => ({
                 fontWeight: 600,
-                color: isActive ? "#c3432e" : "#4A5568",
+                color: isActive ? "#BA3B93" : "#4A5568",
                 textDecoration: "none",
               })}
             >
@@ -136,14 +136,14 @@ const Navbar = () => {
             </NavLink>
             <NavLink
               _hover={{ cursor: "pointer" }}
-              to={"/addData"}
+              to={"/addTask"}
               style={({ isActive }) => ({
                 fontWeight: 600,
-                color: isActive ? "#c3432e" : "#4A5568",
+                color: isActive ? "#BA3B93" : "#4A5568",
                 textDecoration: "none",
               })}
             >
-              Add Data
+              Add Task
             </NavLink>
           </Flex>
 
@@ -220,11 +220,11 @@ const Navbar = () => {
               mb={2}
               _hover={{ cursor: "pointer" }}
               onClick={() => {
-                navigate("/addData");
+                navigate("/addTask");
                 onClose();
               }}
             >
-              Add Data
+              Add Task
             </Text>
           </DrawerBody>
         </DrawerContent>
