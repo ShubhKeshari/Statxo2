@@ -71,21 +71,9 @@ const authenticateUser = async (req, res, next) => {
       .json({ error: true, message: "Access Token Required. Please Login..." });
   }
 };
-// const authorizeUser = async (req, res, next) => {
-//     if (req.isAdmin) {
-//       next();
-//     } else {
-//       return res.status(400).json({
-//         error: true,
-//         message: "User not authorized to access this route",
-//       });
-//     }
-// };
-
 
 module.exports = {
   validateRegister,
   validateLogin,
   authenticateUser,
-  //authorizeUser
 };

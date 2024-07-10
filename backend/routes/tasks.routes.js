@@ -3,6 +3,7 @@ const { Task } = require("../models/task.model");
 const { authenticateUser } = require("../middleware/users.middleware");
 const tasksRoute = express.Router();
 
+//To Get all the data
 tasksRoute.get("/task", async (req, res) => {
   try {
     const tasks = await Task.find();
@@ -14,11 +15,17 @@ tasksRoute.get("/task", async (req, res) => {
   }
 });
 
+//Update the table data
 tasksRoute.patch("/update", authenticateUser, async (req, res) => {
   try {
     const tasksToUpdate = req.body.tasks;
     const isAdmin = req.isAdmin;
-
+    if(tasksToUpdate.length==0){
+      return res.status(400).json({
+        error:true,
+        message:"No updated data given by user"
+      });
+    }
     const updatedTasksPromises = tasksToUpdate.map(async (taskData) => {
       const { _id, amount, actionType, actionName, status } = taskData;
       if (!["Type1", "Type2", "Type3"].includes(actionType)) {
@@ -66,6 +73,46 @@ tasksRoute.patch("/update", authenticateUser, async (req, res) => {
     return res.status(500).json({
       error: true,
       message: `Some error occurred, error: ${error}`,
+    });
+  }
+});
+
+//Add item to the table
+tasksRoute.put('/add', authenticateUser, async (req, res) => {
+  try {
+    const { quantity, amount, postingYear, postingMonth, actionType, actionName, actionNumber, status, Impact } = req.body;
+
+    if (!quantity || !amount || !postingYear || !postingMonth || !actionType || !actionName || !actionNumber || !status || !Impact) {
+      return res.status(400).json({
+        error: true,
+        message: "All fields are required",
+      });
+    }
+
+    const tasksCount = await Task.countDocuments();
+    const newTask = new Task({
+      _id: tasksCount + 1,
+      quantity,
+      amount,
+      postingYear,
+      postingMonth,
+      actionType,
+      actionName,
+      actionNumber,
+      status,
+      Impact
+    });
+
+    await newTask.save();
+    
+    res.status(201).json({
+      message: "Task added successfully",
+      data: newTask
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: true,
+      message: `Error adding task: ${error.message}`
     });
   }
 });
