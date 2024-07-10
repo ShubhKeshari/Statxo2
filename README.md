@@ -119,6 +119,14 @@ npm install
 
 npm run server
 ```
+## Snapshot of Website
+
+![image](https://github.com/ShubhKeshari/Statxo2/assets/114546254/17e16e6c-bd73-4e4f-9eba-6c6f116ab9fa)
+![image](https://github.com/ShubhKeshari/Statxo2/assets/114546254/5a2285b3-5824-4ca6-8b9e-6f348935192c)
+![image](https://github.com/ShubhKeshari/Statxo2/assets/114546254/7bb9acb9-b6ff-467e-9d10-398b2a21a069)
+![image](https://github.com/ShubhKeshari/Statxo2/assets/114546254/c285bce4-8792-452b-b89a-db809eee718c)
+![image](https://github.com/ShubhKeshari/Statxo2/assets/114546254/9863a1c9-9a5b-4e01-8df2-911d7dc10ba7)
+
 
 ## API Endpoints
 
