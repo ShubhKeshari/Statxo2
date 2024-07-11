@@ -14,13 +14,11 @@ import {
 } from "@chakra-ui/react";
 import { AuthContext } from "../context/AuthContext";
 import { BASE_URL } from "../../util/vars";
-import { FetchContext } from "../context/FetchContext";
 const DataTable = () => {
   const [tableData, setTableData] = useState([]);
   const [modifiedData, setModifiedData] = useState([]);
-  const {shouldFetch, setShouldFetch} = useContext(FetchContext);
   const toast = useToast();
-  const { auth, setAuth } = useContext(AuthContext);
+  const { auth} = useContext(AuthContext);
   const fetchData = async () => {
     try {
       const res = await fetch(`${BASE_URL}/tasks/task`);
@@ -124,8 +122,7 @@ const DataTable = () => {
   };
   useEffect(() => {
     fetchData();
-    setShouldFetch(false);
-  }, [shouldFetch]);
+  }, []);
   return (
     <>
      

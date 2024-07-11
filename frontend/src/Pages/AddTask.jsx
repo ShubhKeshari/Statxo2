@@ -8,7 +8,6 @@ import {
 } from "@chakra-ui/react";
 import { AuthContext } from "../context/AuthContext";
 import { BASE_URL } from "../../util/vars";
-import { FetchContext } from "../context/FetchContext";
 
 const AddTask = () => {
   const [formData, setFormData] = useState({
@@ -16,15 +15,14 @@ const AddTask = () => {
     amount: '',
     postingYear: '',
     postingMonth: '',
-    actionType: 'Type1', // Default selected value for actionType
-    actionName: 'Action1', // Default selected value for actionName
+    actionType: 'Type1', 
+    actionName: 'Action1', 
     actionNumber: '',
-    status: 'Pending', // Default selected value for status
-    Impact: 'High' // Default selected value for Impact
+    status: 'Pending', 
+    Impact: 'High' 
   });
 
   const { auth } = useContext(AuthContext);
-  const { setShouldFetch } = useContext(FetchContext);
   const toast = useToast();
 
   const handleChange = (e) => {
@@ -56,8 +54,6 @@ const AddTask = () => {
         position: "top-right",
         isClosable: true,
       });
-
-      setShouldFetch(true);
       setFormData({
         quantity: '',
         amount: '',
